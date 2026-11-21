@@ -1,65 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Habitly</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1b31">
+  <title>Habitly | Build habits that stick</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Habitly.</h1>
-    <p></p>
+  <div class="app">
+    <header class="header">
+      <div>
+        <h1>Habitly.</h1>
+        <p id="today"></p>
+      </div>
+      <button class="theme-button" id="themeButton" type="button" aria-label="Switch to light mode">☀️</button>
+    </header>
 
-    <div class="box1">
-        <h2>Where there is will there is a way</h2>
-        <p>Alan V Mathews</p>
-    </div>
+    <main>
+      <section class="quote-card" aria-label="Quote of the day">
+        <blockquote id="quote">“A successful man is one who can lay a firm foundation with the bricks others have thrown at him.”</blockquote>
+        <cite id="quoteAuthor">— David Brinkley</cite>
+      </section>
 
-    <div class="boxes">
-        <div class="box2">
-            <h2>0/10</h2>
-            <p>Done</p>
-        </div>
+      <section class="stats" aria-label="Summary">
+        <article class="stat-card">
+          <strong id="doneCount">3/5</strong>
+          <span>Done today</span>
+        </article>
+        <article class="stat-card">
+          <strong id="bestStreak">12 days</strong>
+          <span>Best streak</span>
+        </article>
+        <article class="stat-card">
+          <strong id="weekRate">86%</strong>
+          <span>Week rate</span>
+        </article>
+      </section>
 
-        <div class="box3">
-            <h2>0 Days</h2>
-            <p>streak</p>
-        </div>
+      <section class="panel add-panel">
+        <h2>Add a habit</h2>
+        <form id="habitForm" autocomplete="off">
+          <div class="add-row">
+            <label for="habitName">Habit name</label>
+            <input id="habitName" name="habitName" type="text" placeholder="e.g. Stretch for 10 minutes" maxlength="60">
+            <button class="add-button" type="submit">Add habit</button>
+          </div>
+          <div class="emoji-picker" aria-label="Choose an emoji">
+            <button class="emoji-button selected" type="button" data-emoji="💧" aria-label="Use 💧 emoji" aria-pressed="true">💧</button>
+            <button class="emoji-button" type="button" data-emoji="📚" aria-label="Use 📚 emoji" aria-pressed="false">📚</button>
+            <button class="emoji-button" type="button" data-emoji="🏃" aria-label="Use 🏃 emoji" aria-pressed="false">🏃</button>
+            <button class="emoji-button" type="button" data-emoji="🧘" aria-label="Use 🧘 emoji" aria-pressed="false">🧘</button>
+            <button class="emoji-button" type="button" data-emoji="💻" aria-label="Use 💻 emoji" aria-pressed="false">💻</button>
+            <button class="emoji-button" type="button" data-emoji="🥗" aria-label="Use 🥗 emoji" aria-pressed="false">🥗</button>
+            <button class="emoji-button" type="button" data-emoji="😴" aria-label="Use 😴 emoji" aria-pressed="false">😴</button>
+            <button class="emoji-button" type="button" data-emoji="✍️" aria-label="Use ✍️ emoji" aria-pressed="false">✍️</button>
+          </div>
+          <p class="form-message" id="formMessage" role="alert"></p>
+        </form>
+      </section>
 
-        <div class="weekrate">
-            <h2>60%</h2>
-        </div>
-    </div>
-
-    <div class="habit>">
-        <input type="text" placeholder="e.g.stretch for 30 mins">
-        <button>Add Habit</button>
-        <p>💧</p>
-        <p>🏃</p>
-        <p>🏋️</p>
-        <p>📗</p>
-        <p>😴</p>
-        <p>🍽️</p>
-        <p>✍️</p>
-       <p>🧘‍♂️</p>
-       <p>💻</p>
-    </div>
-
-    <div class="progress">
+      <section class="panel week-panel">
         <h2>This week</h2>
+        <div class="chart" id="weekChart" role="img" aria-label="Completion for the last 7 days"></div>
+      </section>
 
-    </div>
-
-    <div class="addhab">
-        <h2>Your Habits</h2>
-        <h3>All</h3>
-        <h3>Done Today</h3>
-        <h3>Pending</h3>
-
-
-
-        <div>
-
+      <section class="habits-section" aria-label="Your habits">
+        <div class="habits-heading">
+          <h2>Your habits</h2>
+          <div class="filters" role="group" aria-label="Filter habits">
+            <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-button" type="button" data-filter="done" aria-pressed="false">Done today</button>
+            <button class="filter-button" type="button" data-filter="pending" aria-pressed="false">Pending</button>
+          </div>
         </div>
-    </div></body>
+        <div id="habitList" class="habit-list"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Built with the CodGen Frontend Internship | <a href="https://codgen.in" target="_blank" rel="noreferrer">codgen.in</a></p>
+      <button id="resetButton" type="button">Reset demo data</button>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>
